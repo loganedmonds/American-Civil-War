@@ -101,14 +101,10 @@ civil_war$us_commanders <-
   str_split(civil_war$us_commanders,
                   " and ", n = 2)
 
-
 # Replace miscoded "Union Victory" value
 # Now all results are Confederate/Union - "victory"
 civil_war$results <- 
   str_replace(civil_war$results, "V", "v")
-
-
-
 
 # Remove ',' that coerces NAs with as.numeric()
 # 
