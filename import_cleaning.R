@@ -21,7 +21,7 @@ civil_war <-
     select( -c(`cwsac ref`, `preservation priority`, `national park unit`, 
                `start month`, `start day`, `start year`,
                `end month`, `end day`, `end year`,
-               `nps site`, description, `forces engaged`)) 
+               `nps site`, description, `forces engaged`, `est_casualties`)) 
 
 # Cleaning up variable names
 # Replace spaces and special characters
@@ -107,7 +107,6 @@ civil_war$results <-
   str_replace(civil_war$results, "V", "v")
 
 # Remove ',' that coerces NAs with as.numeric()
-# 
 civil_war$total_est_casualties <- 
   str_replace(civil_war$total_est_casualties,
               ",", "")
@@ -130,17 +129,10 @@ civil_war$results <- factor(civil_war$results)
 
 civil_war$multiple_states <- factor(civil_war$multiple_states)
 
-
-
-civil_war %>% count(state) %>% filter(n > 10)
-
-civil_war %>% 
-  ggplot(aes(x = state)) +
-    geom_bar() +
-    theme_classic() + 
-    coord_flip() + # Swap x and y axes, so that state abbreviations are readable
-    labs(x = "", y = "# Battles",
-         title = "State Counts for\n Civil War Battle Sites")
+# Coerce casualties to numeric
+civil_war$total_est_casualties <- as.numeric(civil_war$total_est_casualties)
+civil_war$us_est_casualties <- as.numeric(civil_war$us_est_casualties)
+civil_war$cs_est_casualties <- as.numeric(civil_war$cs_est_casualties)
 
 ## Geocoding
 
