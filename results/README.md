@@ -2,7 +2,8 @@
 
 This cleaned verison of the data includes several edits to the original **civil_war_summaries.csv** file. 
 
-* Cleaned variable names --> removed unecessary spaces and special characters
+* Cleaned variable names
+ * Removed unecessary spaces and special characters
 * Character variable strings
   * Campaign names
   * Battle location names
