@@ -158,8 +158,10 @@ civil_war$location_1[29] <- "Yale, OK"
 civil_war$location_1[227] <- "Pontotoc County, OK"
 
 
+# Google Maps has an API query limit 
+# Please be aware before running the below code
 
-battle_latlong <- ggmap::geocode(civil_war$location_1)
+# battle_latlong <- ggmap::geocode(civil_war$location_1)
 
 
 
