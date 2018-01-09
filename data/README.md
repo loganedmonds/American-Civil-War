@@ -1,6 +1,6 @@
 ## Data Cleanup
 
-This cleaned verison of the data includes several edits to the original civil_war_summaries.csv file. 
+This cleaned verison of the data includes several edits to the original **civil_war_summaries.csv** file. 
 
 Specifically...
 
