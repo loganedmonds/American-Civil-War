@@ -45,7 +45,7 @@ relief_spdf <- as(relief, "SpatialPixelsDataFrame")
 ```
 
 ## Battles by State
-```{r battle_by_state}
+```{r battle-by-state}
 civil_war %>% 
   ggplot(aes(x = state)) +
     geom_bar() +
@@ -57,7 +57,7 @@ civil_war %>%
 
 ## Mapping
 
-```{r gganimate plot}
+```{r battle-geo-plot}
 p <- civil_war %>% filter(results != "Inconclusive") %>%  
   ggplot(aes(x = lon, y = lat, color = results, frame = start_date)) + 
   borders("state") + 
