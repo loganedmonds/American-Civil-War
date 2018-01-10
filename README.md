@@ -1,5 +1,5 @@
 # Civil War
-Mapping Civil War battlefields and casualties
+**Mapping Civil War battlefields and casualties**
 
 ![](E:/civil_war/img/civil_war.jpeg)
 
