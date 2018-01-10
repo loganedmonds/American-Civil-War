@@ -1,4 +1,4 @@
-# Civil War
+# American Civil War
 **Mapping Civil War battlefields and casualties**
 
 ![](img/civil_war.jpeg)
