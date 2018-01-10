@@ -2,12 +2,29 @@
 title: "Civil War Mapping"
 author: "Logan Edmonds"
 date: "January 6, 2018"
-output: html_document
+output: 
+  md_document:
+    variant: markdown_github
 ---
 
 **ISSUE**
 -- Memory allocation for raster relief of contiguous U.S.
 -- Use only eastern U.S.?
+
+```{r}
+knitr::opts_chunk$set(
+	out.width = "100%",
+	dpi = 300,
+	fig.width = 8,
+	fig.height = 6,
+	fig.path = "plots/",
+	strip.white = T,
+	dev = "png",
+	dev.args = list(png = list(bg = "transparent"))
+)
+
+```
+
 
 ```{r data import}
 # Cleaned data from import_cleaning.R
@@ -22,13 +39,13 @@ library(raster)
 
 ## Spatial Data
 
-```{r raster relief import}
-relief <- raster("US_MSR_10M/US_MSR.tif")
+```{r raster relief import, eval = FALSE}
+relief <- raster("data/US_MSR_10M/US_MSR.tif")
 relief_spdf <- as(relief, "SpatialPixelsDataFrame")
 ```
 
 ## Battles by State
-```{r}
+```{r battle_by_state}
 civil_war %>% 
   ggplot(aes(x = state)) +
     geom_bar() +
@@ -49,12 +66,12 @@ p <- civil_war %>% filter(results != "Inconclusive") %>%
   theme(plot.background = element_rect(fill = "#f5f5f2", color = NA),
         legend.position = "bottom",
         legend.title = element_blank()) +
-  labs(title = "Civil War Battles")
+  labs(title = "\nCivil War Battles")
 
 p
 ```
 
-```{r mapping battle points}
+```{r mapping battle points, eval = FALSE }
 ggmap::qmplot(lon, lat, data = civil_war, col = "salmon")
 USAMap <- ggmap(get_googlemap(center = "Liberal, KS", scale=2, zoom=4, maptype = "satellite"), extent="normal")
 USAMap + geom_point(aes(x = lon, y = lat), data = battle_latlong, col = "blue", alpha = 0.6)
@@ -63,7 +80,7 @@ get_openstreetmap(bbox = c(left = -127.046, bottom = 19.601, right = -58.052, to
 ```
 
 ## Hillshade
-```{r}
+```{r hillshade, eval = FALSE}
 alt <- getData('alt', country = "USA")
 slope <- terrain(alt[[1]], opt='slope') # only first layer of USA (country level)
 aspect <- terrain(alt[[1]], opt='aspect')
