@@ -10,4 +10,6 @@ This analysis was inspired by a recent trip to the [Gettysburg National Military
 The theme for my map is a replication of Timo Grossenbacher's beautiful visualization of [Switzerland's regional demographics](https://timogrossenbacher.ch/2016/12/beautiful-thematic-maps-with-ggplot2-only/). The idea behind the theme is to highlight the data with minimal visual distractions.
 
 ## Data 
-The [Civil War Battle Summaries of Major Battles](https://archive.org/details/CivilWarBattleSummariesOfMajorBattles) data is provided by the National Parks Service. This 
+The [Civil War Battle Summaries of Major Battles](https://archive.org/details/CivilWarBattleSummariesOfMajorBattles) data is provided by the National Parks Service. 
+
+![](plots/gganimate plot-1.png)
