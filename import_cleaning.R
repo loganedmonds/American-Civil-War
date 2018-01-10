@@ -21,7 +21,7 @@ civil_war <-
     select( -c(`cwsac ref`, `preservation priority`, `national park unit`, 
                `start month`, `start day`, `start year`,
                `end month`, `end day`, `end year`,
-               `nps site`, description, `forces engaged`, `est_casualties`)) 
+               `nps site`, description, `forces engaged`, `est casualties`)) 
 
 # Cleaning up variable names
 # Replace spaces and special characters
@@ -92,14 +92,14 @@ civil_war$cs_commanders <-
 # Split battles with two commanders into seperate vars
 # Remove unecessary "and"
 
-civil_war$cs_commanders <- 
-  str_split(civil_war$cs_commanders, 
-                  " and ", n = 2)
+# civil_war$cs_commanders <- 
+  # str_split(civil_war$cs_commanders, 
+                  # " and ", n = 2)
 
 # Repeat process for Union commanders
-civil_war$us_commanders <- 
-  str_split(civil_war$us_commanders,
-                  " and ", n = 2)
+# civil_war$us_commanders <- 
+  # str_split(civil_war$us_commanders,
+                  # " and ", n = 2)
 
 # Replace miscoded "Union Victory" value
 # Now all results are Confederate/Union - "victory"
@@ -150,6 +150,8 @@ civil_war$location_1[227] <- "Pontotoc County, OK"
 # Please be aware before running the below code
 
 # battle_latlong <- ggmap::geocode(civil_war$location_1)
+
+write.csv(civil_war, file = "results/civil_war_clean.csv")
 
 
 
