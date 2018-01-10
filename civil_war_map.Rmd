@@ -9,8 +9,9 @@ output: html_document
 -- Memory allocation for raster relief of contiguous U.S.
 -- Use only eastern U.S.?
 
-```{r}
-
+```{r data import}
+# Cleaned data from import_cleaning.R
+load("results/civil_war.Rda")
 ```
 
 
