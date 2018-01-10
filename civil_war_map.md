@@ -83,7 +83,7 @@ p <- civil_war %>%
   filter(results != "Inconclusive") %>%  
   ggplot(aes(x = lon, y = lat, frame = start_date)) + 
   borders("state") + 
-  geom_point(aes(color = results), position = "jitter", alpha = 0.6) + 
+  geom_point(aes(color = results), position = "jitter", alpha = 0.6, size = 0.9) + 
   scale_color_manual(values = c("gray39", "midnightblue")) +
   theme_void() +
   theme(plot.background = element_rect(fill = "#f5f5f2", color = NA),
