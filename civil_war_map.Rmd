@@ -7,7 +7,12 @@ output: html_document
 
 **ISSUE**
 -- Memory allocation for raster relief of contiguous U.S.
--- Use only easter U.S.?
+-- Use only eastern U.S.?
+
+```{r}
+
+```
+
 
 ```{r library loads}
 library(ggmap)
