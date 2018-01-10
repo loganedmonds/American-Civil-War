@@ -73,7 +73,7 @@ civil_war %>%
          title = "State Counts for\n Civil War Battle Sites")
 ```
 
-<img src="plots/battle_by_state-1.png" width="100%" />
+<img src="plots/battle-by-state-1.png" width="100%" />
 
 Mapping
 -------
@@ -92,7 +92,7 @@ p <- civil_war %>% filter(results != "Inconclusive") %>%
 p
 ```
 
-<img src="plots/gganimate plot-1.png" width="100%" />
+<img src="plots/battle-geo-plot-1.png" width="100%" />
 
 ``` r
 ggmap::qmplot(lon, lat, data = civil_war, col = "salmon")
