@@ -12,4 +12,4 @@ The theme for my map is a replication of Timo Grossenbacher's beautiful visualiz
 ## Data 
 The [Civil War Battle Summaries of Major Battles](https://archive.org/details/CivilWarBattleSummariesOfMajorBattles) data is provided by the National Parks Service. 
 
-![](plots/gganimate plot-1.png)
+![](plots/battle-geo-plot-1.png)
