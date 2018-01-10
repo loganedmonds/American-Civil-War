@@ -1,6 +1,8 @@
 # Civil War
 Mapping Civil War battlefields and casualties
 
+![](E:/civil_war/img/civil_war.jpeg)
+
 ## Background
 
 This analysis was inspired by a recent trip to the [Gettysburg National Military Park](https://www.nps.gov/gett/index.htm) and a wonderful history lesson provided by one of the park's [Licensed Battlefield Guides](http://gettysburgtourguides.org/).  
