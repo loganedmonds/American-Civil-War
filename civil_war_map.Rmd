@@ -14,7 +14,6 @@ output: html_document
 load("results/civil_war.Rda")
 ```
 
-
 ```{r library loads}
 library(ggmap)
 library(dplyr)
@@ -26,16 +25,6 @@ library(raster)
 ```{r raster relief import}
 relief <- raster("US_MSR_10M/US_MSR.tif")
 relief_spdf <- as(relief, "SpatialPixelsDataFrame")
-```
-
-```{r}
-alt <- getData('alt', country = "USA")
-slope <- terrain(alt[[1]], opt='slope') # only first layer of USA (country level)
-aspect <- terrain(alt[[1]], opt='aspect')
-### create a relief layer
-hill <- hillShade(slope, aspect, angle = 40, direction = 270)
-hill_spdf <- as(hill, "SpatialPixelsDataFrame")
-plot(hill, col=grey(0:100/100), legend=FALSE)
 ```
 
 ## Battles by State
@@ -71,4 +60,15 @@ USAMap <- ggmap(get_googlemap(center = "Liberal, KS", scale=2, zoom=4, maptype =
 USAMap + geom_point(aes(x = lon, y = lat), data = battle_latlong, col = "blue", alpha = 0.6)
 
 get_openstreetmap(bbox = c(left = -127.046, bottom = 19.601, right = -58.052, top =51.836))
+```
+
+## Hillshade
+```{r}
+alt <- getData('alt', country = "USA")
+slope <- terrain(alt[[1]], opt='slope') # only first layer of USA (country level)
+aspect <- terrain(alt[[1]], opt='aspect')
+### create a relief layer
+hill <- hillShade(slope, aspect, angle = 40, direction = 270)
+hill_spdf <- as(hill, "SpatialPixelsDataFrame")
+plot(hill, col=grey(0:100/100), legend=FALSE)
 ```
