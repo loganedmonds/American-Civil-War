@@ -1,0 +1,68 @@
+---
+title: "Civil War Mapping"
+author: "Logan Edmonds"
+date: "January 6, 2018"
+output: html_document
+---
+
+**ISSUE**
+-- Memory allocation for raster relief of contiguous U.S.
+-- Use only easter U.S.?
+
+```{r library loads}
+library(ggmap)
+library(dplyr)
+library(raster)
+```
+
+## Spatial Data
+
+```{r raster relief import}
+relief <- raster("US_MSR_10M/US_MSR.tif")
+relief_spdf <- as(relief, "SpatialPixelsDataFrame")
+```
+
+```{r}
+alt <- getData('alt', country = "USA")
+slope <- terrain(alt[[1]], opt='slope') # only first layer of USA (country level)
+aspect <- terrain(alt[[1]], opt='aspect')
+### create a relief layer
+hill <- hillShade(slope, aspect, angle = 40, direction = 270)
+hill_spdf <- as(hill, "SpatialPixelsDataFrame")
+plot(hill, col=grey(0:100/100), legend=FALSE)
+```
+
+## Battles by State
+```{r}
+civil_war %>% 
+  ggplot(aes(x = state)) +
+    geom_bar() +
+    theme_classic() + 
+    coord_flip() + # Swap x and y axes, so that state abbreviations are readable
+    labs(x = "", y = "# Battles",
+         title = "State Counts for\n Civil War Battle Sites")
+```
+
+## Mapping
+
+```{r gganimate plot}
+p <- civil_war %>% filter(results != "Inconclusive") %>%  
+  ggplot(aes(x = lon, y = lat, color = results, frame = start_date)) + 
+  borders("state") + 
+  geom_point(position = "jitter", alpha = 0.8) + 
+  theme_void() +
+  theme(plot.background = element_rect(fill = "#f5f5f2", color = NA),
+        legend.position = "bottom",
+        legend.title = element_blank()) +
+  labs(title = "Civil War Battles")
+
+p
+```
+
+```{r mapping battle points}
+ggmap::qmplot(lon, lat, data = civil_war, col = "salmon")
+USAMap <- ggmap(get_googlemap(center = "Liberal, KS", scale=2, zoom=4, maptype = "satellite"), extent="normal")
+USAMap + geom_point(aes(x = lon, y = lat), data = battle_latlong, col = "blue", alpha = 0.6)
+
+get_openstreetmap(bbox = c(left = -127.046, bottom = 19.601, right = -58.052, top =51.836))
+```
